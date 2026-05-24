@@ -1,0 +1,140 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(13deg, rgba(248, 143, 6, 0.993), rgba(255, 217, 2, 0.938));
+}
+
+.login-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    margin: 0 auto;
+}
+
+.form-card{
+    width:350px;
+    padding:30px;
+    border-radius:15px;
+    background:white;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    backdrop-filter:blur(10px);
+}
+
+.register-link-card{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+
+.register-link{
+    text-decoration: none;
+    color: #ffa703;
+    font-size: 14px;
+}
+
+.form-card h1{
+    color: #faad06;
+}
+
+.form-card p{
+    color: #8d8d8d;
+    font-size: 14px;
+}
+
+
+
+.input-card{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;   
+}
+
+.icon{
+    color: #555;
+}
+
+.input-box{
+    display:flex;
+    align-items:center;
+    background:#f1f1f1;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ddd;
+}
+
+.input-box svg{
+    font-size:20px;
+    color:#555;
+}
+
+.input-box input{
+    width:100%;
+    margin-left:10px;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-size:15px;
+    color:#222;
+}
+
+.input-box input::placeholder{
+    color:#888;
+}
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:15px;
+}
+
+.check-box{
+    background-color: #8d8d8d;
+    border: 1px solid #8d8d8d;
+    color: rgba(204, 202, 202, 0.438);
+    cursor: pointer;
+    accent-color:#585858;  
+}
+
+.remember-me{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size: 14px;
+    color: #8d8d8d;
+    font-weight: 500;
+
+}
+
+
+.forgot-btn{
+    border:none;
+    background:none;
+    color: #7a6f6f;
+    cursor:pointer;
+}
+
+.sign-in-btn{
+    width:100%;
+    margin-top:20px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(to right,#ffda06,#fea500);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:all 0.5s ease;
+}
+
+.sign-in-btn:hover{
+    background:linear-gradient(to right,#fea500,#ffda06);
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    opacity:0.9;
+}

@@ -1,0 +1,144 @@
+.settings-container{
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px;
+    background-color: #f5f7fb;
+}
+
+.settings-card{
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+}
+
+.settings-header h1{
+    margin: 0;
+    font-size: 34px;
+    color: #111827;
+}
+
+.settings-header p{
+    margin-top: 10px;
+    color: #6b7280;
+}
+
+.settings-section{
+    margin-top: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-title{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings-title h2{
+    margin: 0;
+    font-size: 20px;
+    color: #111827;
+}
+
+/* PROFILE */
+
+.profile-card{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-card img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.profile-card h3{
+    margin: 0;
+    color: #111827;
+}
+
+.profile-card p{
+    margin-top: 6px;
+    color: #6b7280;
+}
+
+/* TOGGLE SWITCH */
+
+.toggle-switch{
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 30px;
+}
+
+.toggle-switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #d1d5db;
+    border-radius: 34px;
+    transition: 0.3s;
+}
+
+.slider::before{
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle-switch input:checked + .slider{
+    background-color: #6366f1;
+}
+
+.toggle-switch input:checked + .slider::before{
+    transform: translateX(24px);
+}
+
+/* LOGOUT */
+
+.logout-btn{
+    margin-top: 40px;
+    border: none;
+    background-color: #ef4444;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 14px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover{
+    background-color: #dc2626;
+}
+
+@media screen and (max-width: 768px){
+
+    .settings-section{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+}

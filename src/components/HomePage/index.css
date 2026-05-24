@@ -1,0 +1,224 @@
+.home-container{
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.home-card{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.slidebar-container{
+    background-color: #f8f9fa;
+    width: 260px;
+    padding: 20px 14px;
+    border-right: 1px solid #808388;
+}
+
+.slidebar-card{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.website-logo-card{
+    display: flex;
+    flex-direction: column;
+}
+
+.website-logo-card p{
+    font-size: 14px;
+    font-weight: bold;
+    color: #302d2dd3;
+    margin: 0;
+    margin-top: -40px;
+}
+
+.home-logo{
+    width: 100%;
+    max-width: 220px;
+    display: block;
+    margin-left: -25px;
+    margin-top: -25px;
+}
+
+.progress-card{
+    width:220px;
+    padding:25px;
+    background:white;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.progress-circle{
+    width:140px;
+    height:140px;
+    margin:auto;
+    border-radius:50%;
+
+    background:
+    conic-gradient(
+        #facc15 0% 75%,
+        #f3f4f6 75% 100%
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+.progress-circle::before{
+    content:"";
+    position:absolute;
+    width:105px;
+    height:105px;
+    background:white;
+    border-radius:50%;
+}
+
+.progress-circle h1{
+    position:relative;
+    font-size:28px;
+    color:#111;
+}
+
+.slidebar-content-card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.slidebar-links{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    border-radius:10px;
+    padding: 10px 12px;
+    cursor:pointer;
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+.slidebar-links p{
+    font-size: 14px;
+    font-weight: 700;
+    color:#111;
+}
+
+.slidebar-links:hover{
+    transform:translateY(-2px);
+    background-color: #e5e7eb;
+    color: #111;
+}
+
+.profile-card{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.profile-details{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.profile-details h3{
+    margin: 0;
+    font-size: 14px;
+    color: #111;
+}
+
+.profile-logo{
+    width: 100%;
+    max-width: 50px;
+}
+
+.dropdown-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.header-container{
+    width:100%;
+    min-height: 15vh;
+    padding: 20px 30px;
+}
+
+@media screen and (max-width: 768px){
+
+    .home-card{
+        flex-direction: column;
+    }
+
+    .slidebar-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 100vh;
+        background: #f8f9fa;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.35s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .slidebar-container.active{
+        transform: translateX(0);
+    }
+
+    .slidebar-card{
+        gap: 20px;
+    }
+
+    .website-logo-card{
+        align-items: center;
+    }
+
+    .home-logo{
+        max-width: 180px;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .website-logo-card p{
+        margin-top: -20px;
+        text-align: center;
+    }
+
+    .progress-card{
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+    }
+
+    .slidebar-content-card{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .slidebar-links{
+        width: 140px;
+        justify-content: center;
+    }
+
+    .profile-card{
+        justify-content: center;
+    }
+
+    .header-container{
+        padding: 15px;
+        min-height: auto;
+    }
+}

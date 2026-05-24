@@ -1,0 +1,166 @@
+.mytask-container{
+    width: 100%;
+    padding: 20px;
+    background-color: #f5f7fb;
+    min-height: 100vh;
+}
+
+.mytask-card{
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+}
+
+
+.mytask-header-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.mytask-header-text h2{
+    margin: 0;
+    font-size: 32px;
+    color: #111827;
+}
+
+.mytask-header-text p{
+    margin-top: 8px;
+    color: #6b7280;
+}
+
+
+.search-card{
+    width: 350px;
+    height: 50px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f9fafb;
+}
+
+.search-card input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+
+.mytask-view-container{
+    width: 100%;
+}
+
+
+.mytask-top-header{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 18px 20px;
+    background-color: #f9fafb;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+
+.mytask-top-header p{
+    margin: 0;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+
+.mytask-view-card{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.mytask-view-list{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+    background-color: #fff;
+    padding: 22px 20px;
+    border-radius: 18px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.mytask-view-list:hover{
+    transform: translateY(-3px);
+}
+
+
+.list-text-card h2{
+    margin: 0;
+    font-size: 18px;
+    color: #111827;
+}
+
+.list-text-card p{
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+.priority-card p{
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+
+.list-date-card{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4b5563;
+}
+
+
+.mytask-view-list > p{
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background-color: #dbeafe;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+@media screen and (max-width: 992px){
+
+    .mytask-header-card{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-card{
+        width: 100%;
+    }
+
+    .mytask-top-header{
+        display: none;
+    }
+
+    .mytask-view-list{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+}
