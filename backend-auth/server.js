@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const express = require("express")
 const cors = require("cors")
 const sqlite3 = require("sqlite3").verbose()
@@ -7,7 +9,7 @@ const cookieParser = require("cookie-parser")
 
 const app = express()
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://task-manager-app-smoky-theta.vercel.app",
     credentials: true
 }))
 app.use(express.json())
@@ -15,7 +17,7 @@ app.use(cookieParser())
 
 const db = new sqlite3.Database("users.db")
 
-const SECRET_KEY = "mysecretkey"
+const SECRET_KEY = process.env.SECRET_KEY
 
 db.run(`
         CREATE TABLE IF NOT EXISTS users(
@@ -121,7 +123,7 @@ const authenticationToken = (req, res, next) => {
 
     jwt.verify(token, SECRET_KEY, (err, user) =>{
         if(err){
-            return res.status(401).json({message: "Invalid User"})
+            return res.status(403).json({message: "Invalid User"})
         }
         req.user = user
         next()
@@ -135,7 +137,7 @@ app.get("/api/me",authenticationToken, (req, res)=>{
         })
 })
 
-const port = 5000
+const port = process.env.PORT || 5000
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)

@@ -29,10 +29,15 @@ const LoginPage = () => {
     const handlesubmit = async(e)=> {
         e.preventDefault()
 
+        console.log("login clicked")
+
+        console.log(import.meta.env.VITE_API_URL)
+
         setError("");
         setSuccess("");
 
-        const url = "http://localhost:5000/api/login"
+        const url =
+        `${import.meta.env.VITE_API_URL}/api/login`
 
         const userDetails = {
             name:  form.username,
@@ -48,6 +53,9 @@ const LoginPage = () => {
                 navigate("/");
             }, 1000);
         }catch(e){
+            console.log(e)
+            console.log(e.response)
+            console.log(e.response?.data)
             setError(e.response?.data?.message || "Something went wrong");
         }
     }
