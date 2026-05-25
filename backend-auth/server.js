@@ -4,14 +4,13 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-const sqlite3 = require("sqlite3").verbose();
+const Database = require("better-sqlite3");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 
 const app = express();
 
-// Middlewares
 app.use(cors({
     origin: "https://task-manager-app-smoky-theta.vercel.app",
     credentials: true
@@ -27,16 +26,16 @@ if (!fs.existsSync("/tmp")) {
 }
 
 const dbPath = path.join("/tmp", "users.db");
-const db = new sqlite3.Database(dbPath);
+const db = new Database(dbPath);
 
-db.run(`
+db.prepare(`
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         email TEXT UNIQUE,
         password TEXT
     )
-`);
+`).run();
 
 
 app.post("/api/register", async (req, res) => {
@@ -46,40 +45,36 @@ app.post("/api/register", async (req, res) => {
         return res.status(400).json({ message: "All fields required" });
     }
 
-    db.get("SELECT * FROM users WHERE email = ?", [email], async (err, user) => {
+    try {
+        const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
+
         if (user) {
             return res.status(400).json({ message: "User already exists" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        db.run(
-            "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-            [name, email, hashedPassword],
-            function (err) {
-                if (err) {
-                    return res.status(500).json({ message: "Database error" });
-                }
+        db.prepare(
+            "INSERT INTO users (name, email, password) VALUES (?, ?, ?)"
+        ).run(name, email, hashedPassword);
 
-                res.json({ message: "User registered successfully" });
-            }
-        );
-    });
+        res.json({ message: "User registered successfully" });
+
+    } catch (err) {
+        res.status(500).json({ message: "Database error" });
+    }
 });
 
 
-
-app.post("/api/login", (req, res) => {
+app.post("/api/login", async (req, res) => {
     const { name, password } = req.body;
 
     if (!name || !password) {
         return res.status(400).json({ message: "All fields required" });
     }
 
-    db.get("SELECT * FROM users WHERE name = ?", [name], async (err, user) => {
-        if (err) {
-            return res.status(500).json({ message: "Database error" });
-        }
+    try {
+        const user = db.prepare("SELECT * FROM users WHERE name = ?").get(name);
 
         if (!user) {
             return res.status(400).json({ message: "User not found" });
@@ -109,9 +104,11 @@ app.post("/api/login", (req, res) => {
         });
 
         res.json({ message: "Login Successfully" });
-    });
-});
 
+    } catch (err) {
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
 
 app.post("/api/logout", (req, res) => {
@@ -123,7 +120,6 @@ app.post("/api/logout", (req, res) => {
 
     res.json({ message: "Logout Successfully" });
 });
-
 
 
 const authenticationToken = (req, res, next) => {
