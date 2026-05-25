@@ -2,6 +2,8 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -20,10 +22,13 @@ app.use(cookieParser());
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
-// SQLite DB
-const db = new sqlite3.Database("/tmp/users.db");
+if (!fs.existsSync("/tmp")) {
+    fs.mkdirSync("/tmp");
+}
 
-// Create table
+const dbPath = path.join("/tmp", "users.db");
+const db = new sqlite3.Database(dbPath);
+
 db.run(`
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
