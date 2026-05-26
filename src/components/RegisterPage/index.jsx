@@ -31,7 +31,7 @@ const RegisterPage = () => {
         setError("");
         setSuccess("");
 
-        const url = `${import.meta.env.VITE_API_URL}/api/register`
+        const url = "https://task-manager-app-2-n4qf.onrender.com/api/register"
 
         const userDetails = {
             name:  form.username,
@@ -51,6 +51,9 @@ const RegisterPage = () => {
                 navigate("/");
             }, 1000);
         }catch(e){
+            console.log(e)
+            console.log(e.response)
+            console.log(e.response?.data)
             setError(e.response?.data?.message || "Something went wrong");
         }
     }

@@ -25,7 +25,7 @@ const Settings = () => {
 
     const handleLogout = async() => {
         try{
-            const url = `${import.meta.env.VITE_API_URL}/api/logout`
+            const url = "https://task-manager-app-2-n4qf.onrender.com/api/logout"
             await axios.post(
             url, {}, {
                 withCredentials: true

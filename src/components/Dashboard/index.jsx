@@ -30,7 +30,7 @@ const Dashboard = ({tasksList , setActivePage, handleDeleteTask, showMenu, toggl
     )
 
     useEffect(() => {
-        const url = "http://localhost:5000/api/me"
+       const url = "https://task-manager-app-2-n4qf.onrender.com/api/me"
         axios.get(url, {withCredentials : true}).then((response) => {
             setUsername(response.data.username)
         }).catch((e) => {

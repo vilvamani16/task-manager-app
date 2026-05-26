@@ -36,8 +36,7 @@ const LoginPage = () => {
         setError("");
         setSuccess("");
 
-        const url =
-        `${import.meta.env.VITE_API_URL}/api/login`
+        const url = "https://task-manager-app-2-n4qf.onrender.com/api/login"
 
         const userDetails = {
             name:  form.username,

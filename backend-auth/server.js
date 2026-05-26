@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 app.use(cors({
-    origin: "https://task-manager-app-smoky-theta.vercel.app",
+    origin: true,
     credentials: true
 }));
 
